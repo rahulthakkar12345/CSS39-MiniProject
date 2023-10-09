@@ -1,0 +1,281 @@
+
+/* 1 */
+/* first, we will reset all css exists by default. this is all margin & padding any element inherits by default will be set to be null  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* 2 */
+/* setting background color of body */
+
+body {
+  background-color: #bcb0d8;
+}
+
+
+
+/* 3 */
+/* Now this container have a content of our website.
+as per our design, we want our form to be of certain width and at the center position */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto; /* this makes our element positioned to center */
+  /* add border: 1px solid black;  to check the content widht remove it later after setting .apply-box*/
+}
+
+
+
+/* 4 */
+/* this will be contain heading and form inputs */
+.apply_box {
+
+  /* 4A */
+  /* we will set background color of this <div> */
+  background-color: white; 
+
+  /* 4B */
+  /* As per our design requirement, we will set border of this container. we want border to have shadow and
+   have border radius to have box edges round  */
+  box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.1);
+  border-radius: 10px;
+
+  /* 4C */
+    /* Now we want this container to have its own width, we dont want this to spread all inside the container  */
+    max-width: 600px;
+    /* 4D */
+    /* add  border: 1px solid black; in this and in .container to see how containers are taking up the place*/
+
+    /* 4E */
+    /* we want our <div> to be in center. */
+    margin: 0 auto;
+    /* 4F */
+    /* Now we want space inside so lable text have some space between container's border */
+    padding: 20px;
+
+    /* 4G */
+    /* we want our container to have space from top of the screen */
+    margin-top: 50px;
+    
+}
+
+/* 5 */
+/* we want to change the font css styling as per our design. this is part of heading text */
+.title_small {
+  font-size: 15px;
+}
+
+
+
+/* 6 */
+/* now we will set form_container <div> which is part of <form> tag to contain all form inputs */
+.form_container {
+
+  /* 6A */
+  /* use border to see what we are targetting */
+  /* border: 1px solid black; */
+  /* remove it after we finish this container coding */
+
+
+  /* 6B */
+  /* we want margin from top*/
+  margin-top: 20px;
+
+  /* 6C */
+  /* we will be using display property set to grid. */
+  display: grid; /* The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages without having to use floats and positioning. */
+  /* we can see our our form input items have set itself to rows and columns */
+
+  /* 6D */
+  /* Now we want to have some space between rows and columns we created with display:grid  */
+  gap: 20px;
+  
+  /* 6F */
+  /* Now we need to define number of columns our grid layout should have and we need to define width of each column */
+ /* when we have border:1px solid black , we can see when we compress our window screen, the input field get away from container width. It moves out of container */
+ /* to resolve this, we will use we use grid-template-column */
+
+ /* Now we have ability to specify how many columns we want in the grid and then letting the browser handle the responsiveness of those columns for us, showing fewer columns on smaller viewport sizes, and more columns as the screen estate allows for more, without needing to write a single media query to dictate this responsive behavior. */
+  
+ /* This magical, media-query-less responsiveness is achieved using the repeat() function and the auto-placement keywords. */
+ 
+/*  first code this to see how we are defining each column to be of 300px :-
+      grid-template-columns: 300px 300px ; 
+      we can also code:-
+      grid-template-columns: 100px 100px 100px 
+      this will make three columns of 100px; 
+*/
+/* this makes our input go out of the container  */
+
+/* Now, we can use repeat(). This will allow us to repeat as many columns we want.
+we want 2 columns and each column should have be of equal space, so we will use 1fr  */
+/* grid-template-columns: repeat(2,1fr); */
+
+/* The 1fr is what tells the browser to distribute the space between the columns so that each column equally gets one fraction of that space. That is, they’re all fluid, equal-width columns */
+ 
+/* now we have set grid to be always have 2 columns regardless of how wide it is. This is not good enough, as the content will be too squished on smaller viewports.  */
+
+/* So we need to start by specifying a minimum width for the columns, making sure they don’t get too narrow. We can do that using the minmax() function. */
+
+ /* grid-template-columns: repeat(2,minmax(250px,1fr));  */
+
+ /* But the way CSS Grid works, this will cause overflow in the row. The columns will not wrap into new rows if the viewport width is too narrow to fit them all with the new minimum width requirement, because we’re explicitly telling the browser to repeat the columns 2 times per row.  */
+
+
+ /* To achieve wrapping, we can use the auto-fit */
+
+  
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  /* These keywords tell the browser to handle the column sizing and element wrapping for us so that the elements will wrap into rows when the width is not large enough to fit them in without any overflow. The fraction unit we used also ensures that in case the width allows for a fraction of a column to fit but not a full column, that space will instead be distributed over the column or columns that already fit, making sure we aren’t left with any empty space at the end of the row. */
+}
+
+
+/* 7 */
+/* Now we want <lable> and <input> to align vertically so for this we will make our form control flex container and its content such as <label> and <input> its flex item */
+.form_control {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 8 */
+/* Now we will style our <lable> elements */
+label {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+/* 9 */
+/* Now we will style all inputsfields such as select,textarea and input */
+input,
+select,
+textarea {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+/* 10 */
+/* Now we see our textarea of address and input of city both coinside with each other */
+/* to resolve this, we will use grid layout,
+we will use <div> of textarea_control which have <lable> and <textarea> to spread itself across two columns.
+this set its space to fit into span across 2 column */
+
+/* 10A */
+.textarea_control {
+  grid-column: 1 / span 2;
+}
+
+/* 10B */
+/* Now we see the whole <div> have taken up the place to fit into two column*/
+/* we can go to inspect in our browser and hover over <div class="form_container"> to see how grid is set. */
+/* when we expand <div class="form_container"> and we can hover over the <div class="textarea_control">, we can see how specifically it has been set */
+
+/* Now we want textarea to cover all the width of container  */
+
+
+.textarea_control textarea {
+  width: 100%;
+}
+
+/* Now we have textarea to have full width of container and its lable above adjusting itself on top but still remains part of the column we have assigned the whole <div> to  */
+
+
+
+/* 10C */
+/* Now we want to make our form responsive for other smaller device,
+it is important to note that when we created grid layout, we have set auto-fit and not specified any number of columns, our grid display should have. */
+/* but when we move to smaller screen, such as pixel 5 on inspect.
+we see input has moved out of container as it couldnt fit itself.  */
+/* moreover, it should be auto-responsive to set column to 1. This does not takes place because we have set one of our <div> of "textarea_control" to set spread itself in 2 column */
+/* we can use media query for such case to remove its spread across the column and this will define the responsiveness of grid module to set everything in 1 column  */
+
+
+@media (max-width: 460px) {
+  .textarea_control {
+    grid-column: 1 / span 1;
+  }
+}
+
+
+
+
+/* 11 */
+/* now we will style the button in our webpage */
+
+button {
+  background-color: red;
+  border: transparent solid 2px;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 8px;
+  transition: 0.3s ease-in;
+}
+button:hover {
+  background-color: #ccc;
+  border: 2px solid red;
+  color: black;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+/* 12 */
+/* Now we want to set the position of our button */
+/* As per design we want button to be on right end of screen */
+/* for this we will use flex property such as way we will make <div> containing the button to flex container and then set
+all the items on its end */
+
+.button_container {
+  display: flex;
+
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* 13 */
+/* we want to outline border of input to change when focus/click on it */
+input:focus {
+  outline-color: red;
+}
+
+
+
+
+
+
+/* 
+
+
+
+input:focus {
+  outline-color: red;
+}
+
+.button_container {
+  display: flex;
+
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+button {
+  background-color: red;
+  border: transparent solid 2px;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 8px;
+  transition: 0.3s ease-in;
+}
+button:hover {
+  background-color: #ccc;
+  border: 2px solid red;
+  color: black;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+  */

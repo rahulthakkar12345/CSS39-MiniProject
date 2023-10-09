@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS39-MiniProject</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container"> <!-- this will be were content of our website will be  -->
+      <div class="apply_box"> <!-- As per our design, our webpage content is simple, a heading and form inputs. 
+                                    so we will create a container to have our heading and form inputs -->
+        <h1>
+          Job Application
+          <span class="title_small">(Web)</span> <!-- we want inline element <span> so our text is on same line with no linebreaks, we want (web) text to be smaller
+                                                  so we will use css styling to target this text with class  -->
+        </h1>
+
+
+
+        <form action=""> <!-- Now we will be creating a form, this form must have, form input and submit button. -->
+          <!-- so our html <form> tag must have two container inside, one to have all form inputs and other to have submit button-->
+          
+          <div class="form_container"> <!-- this will be flex container to have all form input elements. -->
+            
+            <div class="form_control"><!-- this is flex item, to have form inputs -->
+              
+              <label for="first_name"> First Name </label>
+              <input
+                id="first_name"
+                name="first_name"
+                placeholder="Enter First Name..."
+              />
+
+            </div>
+
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="last_name"> Last Name </label>
+              <input
+                id="last_name"
+                name="last_name"
+                placeholder="Enter Last Name..."
+              />
+            
+            </div>
+
+            
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="email"> Email </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter Email..."
+              />
+
+            </div>
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="job_role"> Job Role </label>
+              <select id="job_role" name="job_role">
+                <option value="">Select Job Role</option>
+                <option value="frontend">Frontend Developer</option>
+                <option value="backend">Backend Developer</option>
+                <option value="full_stack">Full Stack Developer</option>
+                <option value="ui_ux">UI UX Designer</option>
+              </select>
+
+            </div>
+
+
+            <div class="textarea_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="address"> Address </label>
+              <textarea
+                id="address"
+                name="address"
+                row="4"
+                cols="50"
+                placeholder="Enter Address"
+              ></textarea>
+
+            </div>
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="city"> City </label>
+              <input id="city" name="city" placeholder="Enter City Name..." />
+
+            </div>
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="pincode"> Pincode </label>
+              <input
+                type="number"
+                id="pincode"
+                name="pincode"
+                placeholder="Enter Pincode Name..."
+              />
+
+            </div>
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="date"> Date </label>
+              <input value="2022-01-10" type="date" id="date" name="date" />
+
+            </div>
+
+
+            <div class="form_control"> <!-- this is flex item, to have form inputs -->
+
+              <label for="upload"> Upload Your CV </label>
+              <input type="file" id="upload" name="upload" />
+
+            </div>
+
+          </div> <!-- closing form container -->
+
+
+          <div class="button_container">  <!-- this container will contain SUBMIT BUTTON -->
+            <button type="submit">Apply Now</button>
+          </div>
+
+
+        </form> <!-- ending form tag -->
+      </div> <!-- ending the <div> of 'applybox'. This element now contains heading and forms -->
+    </div> <!-- closing the <div> of 'container' which has all content of our website -->
+  </body>
+</html>
